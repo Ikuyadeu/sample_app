@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe "Micropost pages" do
-  subject {pages}
+  subject {page}
 
   let(:user) {FactoryGirl.create(:user)}
   before {sign_in user}
