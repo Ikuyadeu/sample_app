@@ -150,9 +150,21 @@ RSpec.describe User, type: :model do
       let(:unfollowed_post) do
         FactoryGirl.create(:micropost, user: FactoryGirl.create(:user))
       end
-      its(:feed) { should include(newer_micropost)}
-      its(:feed) { should include(older_micropost)}
-      its(:feed) { should include(unfollowed_post)}
+
+      describe '#feed' do
+        subject { super().feed }
+        it { is_expected.to include(newer_micropost)}
+      end
+
+      describe '#feed' do
+        subject { super().feed }
+        it { is_expected.to include(older_micropost)}
+      end
+
+      describe '#feed' do
+        subject { super().feed }
+        it { is_expected.not_to include(unfollowed_post) }
+      end
     end
 
 
